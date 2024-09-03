@@ -1,0 +1,27 @@
+<div class="issue-main">
+  <h1>Issue Tracker</h1>
+
+
+  <ul>
+    
+    @for(issue of issues; track issue._id;){
+        <li>
+          <div class="content">
+            <small class="status">{{issue.status}}</small>
+            <div class="title">
+              Title: <input type="text" [value]="issue.title" (input)="onTitleChange(issue._id!, $event)">
+            </div>
+            <div class="description">
+              Description: <textarea (input)="onDescriptionChange(issue._id!, $event)">{{ issue.description }}</textarea>
+            </div>
+          </div>
+        <div class="issue-action">
+          <button (click)="deleteIssue(issue._id!)">Delete Issue</button> 
+          <button (click)="updateIssue(issue._id!)">Update Issue</button>
+        </div>
+      </li>
+    }
+  </ul>
+
+  <button class="action" (click)="createIssue()">Create Issue</button>
+</div>
